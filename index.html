@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta name="description" content="Broadgate Pub Golf — live team standings, current hole and nine-hole scorecard." />
+  <title>Broadgate Pub Golf | Live Leaderboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=1" />
+  <script type="module" src="app.js?v=1"></script>
+</head>
+<body>
+  <div class="top-stripe" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="header-inner wrap">
+      <a class="brand" href="index.html" aria-label="Broadgate Pub Golf home">
+        <span class="brand-icon" aria-hidden="true">⛳</span>
+        <span class="brand-type"><strong>BROADGATE</strong><small>PUB GOLF</small></span>
+      </a>
+      <nav class="top-nav" aria-label="Main navigation">
+        <a href="index.html" class="nav-item active" aria-current="page">Home</a>
+        <span class="nav-item soon" title="Coming next">Teams</span>
+        <span class="nav-item soon" title="Coming next">Scorecard</span>
+        <span class="nav-item soon" title="Coming next">Pub Route</span>
+      </nav>
+      <span class="ref-pill" title="Ref login is being built next">🔒 Ref</span>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-accent hero-accent-left" aria-hidden="true"></div>
+      <div class="hero-accent hero-accent-right" aria-hidden="true"></div>
+      <span class="hero-kicker">THE BROADGATE FLATMATES PRESENT</span>
+      <div class="hero-title-wrap">
+        <span class="hero-illustration" aria-hidden="true">🏌️</span>
+        <div class="hero-title-text"><h1 id="hero-title">BROADGATE</h1><div class="hero-ribbon">PUB GOLF</div></div>
+        <span class="hero-illustration" aria-hidden="true">🏆</span>
+      </div>
+      <div class="hero-bottom"><span class="laurel">❧</span><span>4 TEAMS · 16 PLAYERS · 9 HOLES</span><span class="laurel">❧</span></div>
+      <div class="hero-turf" aria-hidden="true"></div>
+    </section>
+
+    <div class="dashboard-grid">
+      <section class="panel standings" aria-labelledby="standings-title">
+        <div class="panel-heading"><h2 id="standings-title"><span aria-hidden="true">🏆</span> TEAM STANDINGS</h2><span class="panel-subtitle">LOWEST SCORE WINS</span></div>
+        <div class="table-heading" aria-hidden="true"><span>RANK / TEAM</span><span>HOLES</span><span>STROKES</span></div>
+        <div id="leaderboard" class="leaderboard" aria-live="polite">
+          <div class="empty-loading">Loading the leaderboard…</div>
+        </div>
+        <div class="scoring-note"><span class="live-dot" id="database-dot"></span><span id="database-status">Connecting to live scores…</span></div>
+      </section>
+
+      <div class="side-panels">
+        <section class="panel progress-panel" aria-labelledby="progress-title">
+          <div class="panel-heading"><h2 id="progress-title"><span aria-hidden="true">🚩</span> EVENT PROGRESS</h2><span class="hole-indicator" id="hole-indicator">HOLE 1 OF 9</span></div>
+          <div id="hole-progress" class="hole-progress" aria-label="Progress across nine holes"></div>
+          <div class="current-pub">
+            <span class="pub-symbol" aria-hidden="true">🍺</span>
+            <div class="pub-copy"><span class="eyebrow">CURRENT STOP</span><strong id="current-pub-name">Broadgate — Flat 12 Kitchen</strong><span id="current-drink">Can of choice</span></div>
+            <span class="pub-chevron" aria-hidden="true">›</span>
+          </div>
+        </section>
+        <section class="panel activity-panel" aria-labelledby="activity-title">
+          <div class="panel-heading"><h2 id="activity-title"><span aria-hidden="true">📣</span> RECENT ACTIVITY</h2><span class="panel-subtitle">LIVE UPDATES</span></div>
+          <div class="activity-list" id="activity-list"><div class="empty-state">No activity yet — scores will appear here when the game starts.</div></div>
+        </section>
+      </div>
+    </div>
+
+    <section class="quick-stats" aria-label="Event at a glance">
+      <div class="stat-card red-stat"><span aria-hidden="true">👥</span><strong>4</strong><small>TEAMS</small></div>
+      <div class="stat-card green-stat"><span aria-hidden="true">🍺</span><strong>9</strong><small>STOPS</small></div>
+      <div class="stat-card blue-stat"><span aria-hidden="true">🚩</span><strong>9</strong><small>HOLES</small></div>
+      <div class="stat-card dark-stat"><span aria-hidden="true">⛳</span><strong>16</strong><small>PLAYERS</small></div>
+    </section>
+
+    <section class="panel scorecard-preview" aria-labelledby="scorecard-title">
+      <div class="panel-heading scorecard-heading"><div><h2 id="scorecard-title"><span aria-hidden="true">🗒️</span> NINE-HOLE SCORECARD</h2><p>Every team, every hole. Penalties and challenge deductions stay separate.</p></div><span class="panel-subtitle">LIVE SCORES</span></div>
+      <table class="golf-table" id="golf-table">
+        <thead><tr><th scope="col">HOLE</th><th class="red-cell" scope="col">RED</th><th class="green-cell" scope="col">GREEN</th><th class="blue-cell" scope="col">BLUE</th><th class="white-cell" scope="col">WHITE</th></tr></thead>
+        <tbody id="scorecard-body"></tbody>
+        <tfoot id="scorecard-foot"></tfoot>
+      </table>
+      <p class="scorecard-hint">A dash means no score entered. This is a preview — the dedicated Scorecard page comes next.</p>
+    </section>
+    <footer class="site-footer"><div><strong>⛳ BROADGATE PUB GOLF</strong><span>LIVE SCOREBOARD</span></div><small>Built for the flatmates · Keep it on the fairway</small></footer>
+  </main>
+  <!-- Mobile navigation: the other pages will become links as we build them. -->
+  <nav class="mobile-nav" aria-label="Mobile navigation">
+    <a href="index.html" class="mobile-tab current" aria-current="page"><span aria-hidden="true">🏠</span><strong>Home</strong></a>
+    <span class="mobile-tab coming" aria-disabled="true"><span aria-hidden="true">👥</span><strong>Teams</strong></span>
+    <span class="mobile-tab coming" aria-disabled="true"><span aria-hidden="true">📋</span><strong>Scores</strong></span>
+    <span class="mobile-tab coming" aria-disabled="true"><span aria-hidden="true">📍</span><strong>Route</strong></span>
+  </nav>
+</body>
+</html>
