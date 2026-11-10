@@ -31,13 +31,13 @@ function renderLeaderboard(rows) {
     return TEAMS.findIndex((t) => t.id === a.id) - TEAMS.findIndex((t) => t.id === b.id);
   });
   elements.leaderboard.innerHTML = sorted.map((team, i) => `
-    <div class="leader-row ${i === 0 && team.hasActivity ? 'leader-row-first' : ''}">
+    <a href="teams.html#team-${team.id}" class="leader-row ${i === 0 && team.hasActivity ? 'leader-row-first' : ''}" aria-label="View ${escapeHTML(team.name)} team details">
       <span class="position ${i === 0 && team.hasActivity ? 'position-gold' : ''}">${team.hasActivity ? i + 1 : '—'}</span>
       <span class="team-colour ${team.id === 'white' ? 'team-white' : ''}" style="--team-color:${team.colour}"></span>
       <span class="team-name">${escapeHTML(team.name)}</span>
       <span class="holes-count">${team.holesPlayed}/${TOTAL_HOLES}</span>
       <span class="team-total">${team.hasActivity ? team.total : '—'}</span>
-    </div>
+    </a>
   `).join("");
 }
 

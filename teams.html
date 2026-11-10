@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta name="description" content="Meet the four Broadgate Pub Golf teams and follow their live scores." />
+  <title>Teams | Broadgate Pub Golf</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=2" />
+  <script type="module" src="teams.js?v=1"></script>
+</head>
+<body>
+  <div class="top-stripe" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="header-inner wrap">
+      <a class="brand" href="index.html" aria-label="Broadgate Pub Golf home">
+        <span class="brand-icon" aria-hidden="true">⛳</span>
+        <span class="brand-type"><strong>BROADGATE</strong><small>PUB GOLF</small></span>
+      </a>
+      <nav class="top-nav" aria-label="Main navigation">
+        <a href="index.html" class="nav-item">Home</a>
+        <a href="teams.html" class="nav-item active" aria-current="page">Teams</a>
+        <span class="nav-item soon" title="Coming next">Scorecard</span>
+        <span class="nav-item soon" title="Coming next">Pub Route</span>
+      </nav>
+      <span class="ref-pill" title="Ref login will be added later">🔒 Ref</span>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="teams-hero">
+      <span class="teams-eyebrow">THE BROADGATE FLATMATES PRESENT</span>
+      <div class="teams-hero-title"><span aria-hidden="true">🌿</span><h1>MEET THE TEAMS</h1><span aria-hidden="true">🌿</span></div>
+      <p>Four teams. Sixteen players. Nine pubs. One leaderboard.</p>
+      <div class="teams-colour-line" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+    </section>
+
+    <section class="team-section" aria-label="All teams">
+      <div class="teams-section-heading"><h2>THE LINEUP</h2><span>Tap any team for their scores</span></div>
+      <div id="team-grid" class="team-grid" aria-live="polite">
+        <p class="teams-loading">Loading teams…</p>
+      </div>
+      <p id="teams-connection" class="teams-connection">Connecting to live results…</p>
+    </section>
+
+    <footer class="site-footer"><div><strong>⛳ BROADGATE PUB GOLF</strong><span>THE TEAMS</span></div><small>Four teams · One event</small></footer>
+  </main>
+  <nav class="mobile-nav" aria-label="Mobile navigation">
+    <a href="index.html" class="mobile-tab"><span aria-hidden="true">🏠</span><strong>Home</strong></a>
+    <a href="teams.html" class="mobile-tab current" aria-current="page"><span aria-hidden="true">👥</span><strong>Teams</strong></a>
+    <span class="mobile-tab coming" aria-disabled="true"><span aria-hidden="true">📋</span><strong>Scores</strong></span>
+    <span class="mobile-tab coming" aria-disabled="true"><span aria-hidden="true">📍</span><strong>Route</strong></span>
+  </nav>
+</body>
+</html>
