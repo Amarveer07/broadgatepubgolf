@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=2" />
+  <link rel="stylesheet" href="style.css?v=3" />
   <script type="module" src="app.js?v=2"></script>
 </head>
 <body>
@@ -23,7 +23,7 @@
       <nav class="top-nav" aria-label="Main navigation">
         <a href="index.html" class="nav-item active" aria-current="page">Home</a>
         <a href="teams.html" class="nav-item">Teams</a>
-        <span class="nav-item soon" title="Coming next">Scorecard</span>
+        <a href="scorecard.html" class="nav-item">Scorecard</a>
         <span class="nav-item soon" title="Coming next">Pub Route</span>
       </nav>
       <span class="ref-pill" title="Ref login is being built next">🔒 Ref</span>
@@ -85,7 +85,7 @@
         <tbody id="scorecard-body"></tbody>
         <tfoot id="scorecard-foot"></tfoot>
       </table>
-      <p class="scorecard-hint">A dash means no score entered. This is a preview — the dedicated Scorecard page comes next.</p>
+      <p class="scorecard-hint">A dash means no score entered. <a href="scorecard.html" class="preview-open-link">Open the full nine-hole scorecard →</a></p>
     </section>
     <footer class="site-footer"><div><strong>⛳ BROADGATE PUB GOLF</strong><span>LIVE SCOREBOARD</span></div><small>Built for the flatmates · Keep it on the fairway</small></footer>
   </main>
@@ -93,7 +93,7 @@
   <nav class="mobile-nav" aria-label="Mobile navigation">
     <a href="index.html" class="mobile-tab current" aria-current="page"><span aria-hidden="true">🏠</span><strong>Home</strong></a>
     <a href="teams.html" class="mobile-tab"><span aria-hidden="true">👥</span><strong>Teams</strong></a>
-    <span class="mobile-tab coming" aria-disabled="true"><span aria-hidden="true">📋</span><strong>Scores</strong></span>
+    <a href="scorecard.html" class="mobile-tab"><span aria-hidden="true">📋</span><strong>Scores</strong></a>
     <span class="mobile-tab coming" aria-disabled="true"><span aria-hidden="true">📍</span><strong>Route</strong></span>
   </nav>
 </body>

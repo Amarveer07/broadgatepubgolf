@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta name="description" content="Broadgate Pub Golf — the live nine-hole team scorecard." />
+  <title>Scorecard | Broadgate Pub Golf</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=3" />
+  <script type="module" src="scorecard.js?v=1"></script>
+</head>
+<body>
+  <div class="top-stripe" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="header-inner wrap">
+      <a class="brand" href="index.html" aria-label="Broadgate Pub Golf home">
+        <span class="brand-icon" aria-hidden="true">⛳</span>
+        <span class="brand-type"><strong>BROADGATE</strong><small>PUB GOLF</small></span>
+      </a>
+      <nav class="top-nav" aria-label="Main navigation">
+        <a href="index.html" class="nav-item">Home</a>
+        <a href="teams.html" class="nav-item">Teams</a>
+        <a href="scorecard.html" class="nav-item active" aria-current="page">Scorecard</a>
+        <span class="nav-item soon" title="Coming next">Pub Route</span>
+      </nav>
+      <span class="ref-pill" title="Ref login coming later">🔒 Ref</span>
+    </div>
+  </header>
+
+  <main class="wrap scorecard-page">
+    <section class="sc-hero" aria-labelledby="sc-title">
+      <div class="sc-hero-icons" aria-hidden="true">⛳ <span>🍺</span></div>
+      <span class="sc-kicker">THE BROADGATE FLATMATES PRESENT</span>
+      <h1 id="sc-title">THE <span>SCORECARD</span></h1>
+      <p>9 holes. 4 teams. Every stroke counts.</p>
+      <div class="sc-colour-bar" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+    </section>
+
+    <section class="sc-status panel" aria-labelledby="sc-current-title">
+      <div class="sc-status-head">
+        <div>
+          <span class="sc-overline">CURRENT STOP</span>
+          <h2 id="sc-current-title">Hole <span id="sc-current-number">1</span> <small>of 9</small></h2>
+        </div>
+        <span id="sc-live-indicator" class="sc-live"><span class="live-dot connecting"></span><span id="sc-status-text">Connecting…</span></span>
+      </div>
+      <div class="sc-pub-detail"><span class="sc-pub-emoji" aria-hidden="true">🍺</span><div><strong id="sc-current-pub">Broadgate — Flat 12 Kitchen</strong><small id="sc-current-drink">Can of choice</small></div></div>
+      <div class="sc-nine-step" id="sc-nine-step" aria-label="Nine-hole event progress">
+        <span class="sc-step is-current">1</span><span class="sc-step">2</span><span class="sc-step">3</span><span class="sc-step">4</span><span class="sc-step">5</span><span class="sc-step">6</span><span class="sc-step">7</span><span class="sc-step">8</span><span class="sc-step">9</span>
+      </div>
+      <p class="sc-progress-caption" id="sc-progress-caption">0 of 9 holes completed</p>
+    </section>
+
+    <section class="sc-sheet-panel panel" aria-labelledby="sc-sheet-title">
+      <div class="sc-section-head"><div><span class="sc-overline">OFFICIAL LIVE RESULTS</span><h2 id="sc-sheet-title">FULL SCORECARD</h2></div><span class="sc-sheet-tag">⛳ 9 HOLES</span></div>
+      <div class="sc-sheet-explainer">Each number is the <strong>whole team's score</strong> at that hole. Blank holes show a dash.</div>
+      <div class="sc-table-wrap">
+        <table class="sc-table" aria-label="Pub golf team scores by hole">
+          <colgroup><col class="sc-hole-column" /><col span="4" /></colgroup>
+          <thead><tr><th scope="col" class="sc-hole-head">HOLE · PUB · DRINK</th><th scope="col" class="sc-head-red">RED</th><th scope="col" class="sc-head-green">GREEN</th><th scope="col" class="sc-head-blue">BLUE</th><th scope="col" class="sc-head-white">WHITE</th></tr></thead>
+          <tbody id="sc-table-body">
+            <tr class="sc-row-current"><th scope="row"><span class="sc-hole-num">01</span><span class="sc-hole-details"><strong>Flat 12 Kitchen</strong><small>Can of choice</small></span></th><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+            <tr><th scope="row"><span class="sc-hole-num">02</span><span class="sc-hole-details"><strong>Co-op</strong><small>BuzzBall</small></span></th><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+            <tr><th scope="row"><span class="sc-hole-num">03</span><span class="sc-hole-details"><strong>Rose and Crown</strong><small>Dark Fruits Cider</small></span></th><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+            <tr><th scope="row"><span class="sc-hole-num">04</span><span class="sc-hole-details"><strong>Sheaves</strong><small>Beer</small></span></th><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+            <tr><th scope="row"><span class="sc-hole-num">05</span><span class="sc-hole-details"><strong>Ragland</strong><small>Guinness</small></span></th><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+            <tr><th scope="row"><span class="sc-hole-num">06</span><span class="sc-hole-details"><strong>Bierkeller</strong><small>White Wine</small></span></th><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+            <tr><th scope="row"><span class="sc-hole-num">07</span><span class="sc-hole-details"><strong>Roebuck (Spoons)</strong><small>Team-shared Pitcher</small></span></th><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+            <tr><th scope="row"><span class="sc-hole-num">08</span><span class="sc-hole-details"><strong>Lloyds No. 1 Bar</strong><small>Double Raspberry Vodka with Cranberry Juice</small></span></th><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+            <tr><th scope="row"><span class="sc-hole-num">09</span><span class="sc-hole-details"><strong>Canal House</strong><small>Teams Choice</small></span></th><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+          </tbody>
+          <tfoot id="sc-table-foot">
+            <tr><th scope="row">BASE</th><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+            <tr><th scope="row">PENALTIES</th><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+            <tr><th scope="row">CHALLENGES</th><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+            <tr class="sc-grand-total"><th scope="row">TOTAL</th><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+          </tfoot>
+        </table>
+      </div>
+      <p class="sc-formula"><strong>Total = hole strokes + penalties − challenges.</strong> Lowest total wins. Scores refresh automatically when the ref makes changes.</p>
+    </section>
+
+    <section class="sc-ranking-section" aria-labelledby="sc-ranking-title">
+      <div class="sc-section-head"><div><span class="sc-overline">AFTER THE LATEST SCORES</span><h2 id="sc-ranking-title">LIVE TOTALS</h2></div></div>
+      <div class="sc-rank-grid" id="sc-rank-grid">
+        <div class="sc-rank-card"><strong>Team Red</strong><span>—</span></div>
+        <div class="sc-rank-card"><strong>Team Green</strong><span>—</span></div>
+        <div class="sc-rank-card"><strong>Team Blue</strong><span>—</span></div>
+        <div class="sc-rank-card"><strong>Team White</strong><span>—</span></div>
+      </div>
+      <a class="sc-view-teams" href="teams.html">Meet the four teams <span aria-hidden="true">→</span></a>
+    </section>
+
+    <footer class="site-footer"><div><strong>⛳ BROADGATE PUB GOLF</strong><span>THE LIVE SCORECARD</span></div><small>Four teams · Nine holes · One winner</small></footer>
+  </main>
+
+  <nav class="mobile-nav" aria-label="Mobile navigation">
+    <a href="index.html" class="mobile-tab"><span aria-hidden="true">🏠</span><strong>Home</strong></a>
+    <a href="teams.html" class="mobile-tab"><span aria-hidden="true">👥</span><strong>Teams</strong></a>
+    <a href="scorecard.html" class="mobile-tab current" aria-current="page"><span aria-hidden="true">📋</span><strong>Scores</strong></a>
+    <span class="mobile-tab coming" aria-disabled="true"><span aria-hidden="true">📍</span><strong>Route</strong></span>
+  </nav>
+</body>
+</html>
