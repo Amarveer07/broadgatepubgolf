@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=3" />
+  <link rel="stylesheet" href="style.css?v=4" />
   <script type="module" src="app.js?v=2"></script>
 </head>
 <body>
@@ -24,7 +24,7 @@
         <a href="index.html" class="nav-item active" aria-current="page">Home</a>
         <a href="teams.html" class="nav-item">Teams</a>
         <a href="scorecard.html" class="nav-item">Scorecard</a>
-        <span class="nav-item soon" title="Coming next">Pub Route</span>
+        <a href="route.html" class="nav-item">Pub Route</a>
       </nav>
       <span class="ref-pill" title="Ref login is being built next">🔒 Ref</span>
     </div>
@@ -58,11 +58,11 @@
         <section class="panel progress-panel" aria-labelledby="progress-title">
           <div class="panel-heading"><h2 id="progress-title"><span aria-hidden="true">🚩</span> EVENT PROGRESS</h2><span class="hole-indicator" id="hole-indicator">HOLE 1 OF 9</span></div>
           <div id="hole-progress" class="hole-progress" aria-label="Progress across nine holes"></div>
-          <div class="current-pub">
+          <a class="current-pub" href="route.html" aria-label="Open the nine-stop pub route">
             <span class="pub-symbol" aria-hidden="true">🍺</span>
             <div class="pub-copy"><span class="eyebrow">CURRENT STOP</span><strong id="current-pub-name">Broadgate — Flat 12 Kitchen</strong><span id="current-drink">Can of choice</span></div>
             <span class="pub-chevron" aria-hidden="true">›</span>
-          </div>
+          </a>
         </section>
         <section class="panel activity-panel" aria-labelledby="activity-title">
           <div class="panel-heading"><h2 id="activity-title"><span aria-hidden="true">📣</span> RECENT ACTIVITY</h2><span class="panel-subtitle">LIVE UPDATES</span></div>
@@ -94,7 +94,7 @@
     <a href="index.html" class="mobile-tab current" aria-current="page"><span aria-hidden="true">🏠</span><strong>Home</strong></a>
     <a href="teams.html" class="mobile-tab"><span aria-hidden="true">👥</span><strong>Teams</strong></a>
     <a href="scorecard.html" class="mobile-tab"><span aria-hidden="true">📋</span><strong>Scores</strong></a>
-    <span class="mobile-tab coming" aria-disabled="true"><span aria-hidden="true">📍</span><strong>Route</strong></span>
+    <a href="route.html" class="mobile-tab"><span aria-hidden="true">📍</span><strong>Route</strong></a>
   </nav>
 </body>
 </html>

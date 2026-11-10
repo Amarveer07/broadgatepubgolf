@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta name="description" content="Broadgate Pub Golf — all nine stops, with each pub's assigned drink and live event progress." />
+  <title>Pub Route | Broadgate Pub Golf</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=4" />
+  <script type="module" src="route.js?v=1"></script>
+</head>
+<body>
+  <div class="top-stripe" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="header-inner wrap">
+      <a class="brand" href="index.html" aria-label="Broadgate Pub Golf home">
+        <span class="brand-icon" aria-hidden="true">⛳</span>
+        <span class="brand-type"><strong>BROADGATE</strong><small>PUB GOLF</small></span>
+      </a>
+      <nav class="top-nav" aria-label="Main navigation">
+        <a href="index.html" class="nav-item">Home</a>
+        <a href="teams.html" class="nav-item">Teams</a>
+        <a href="scorecard.html" class="nav-item">Scorecard</a>
+        <a href="route.html" class="nav-item active" aria-current="page">Pub Route</a>
+      </nav>
+      <span class="ref-pill" title="Ref login will be added later">🔒 Ref</span>
+    </div>
+  </header>
+
+  <main class="wrap route-page">
+    <section class="route-hero" aria-labelledby="route-title">
+      <div class="route-hero-top"><span class="route-kicker">THE BROADGATE FLATMATES PRESENT</span><span class="route-stamp">⛳ NINE HOLES</span></div>
+      <h1 id="route-title">THE <span>PUB ROUTE</span></h1>
+      <p>Nine stops. Four teams. One live route.</p>
+      <div class="route-hero-stripes" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    </section>
+
+    <section class="route-now panel" aria-labelledby="route-now-title">
+      <div class="route-now-heading">
+        <div><span class="route-overline">YOUR LIVE EVENT</span><h2 id="route-now-title">CURRENT STOP</h2></div>
+        <span class="route-live" id="route-connection"><span class="live-dot connecting"></span><span id="route-connection-text">Connecting…</span></span>
+      </div>
+      <div class="route-now-main">
+        <div class="route-hole-large"><span>HOLE</span><strong id="route-current-number">01</strong><small>OF 09</small></div>
+        <div class="route-now-detail"><h3 id="route-current-pub">Broadgate — Flat 12 Kitchen</h3><div class="route-drink-row"><span aria-hidden="true">🍺</span><span id="route-current-drink">Can of choice</span></div></div>
+      </div>
+      <div class="route-progress-heading"><span>PROGRESS</span><strong id="route-progress-caption">0 / 9 completed</strong></div>
+      <div class="route-progress-bar" id="route-progress-bar" aria-label="Event progress, 0 of 9 holes completed"><span></span></div>
+      <div class="route-now-footer"><span>Scores and route update automatically as each hole is completed.</span><a href="scorecard.html">View scores <span aria-hidden="true">↗</span></a></div>
+    </section>
+
+    <section class="route-list-section" aria-labelledby="route-list-title">
+      <div class="route-section-head"><div><span class="route-overline">THE PLAN</span><h2 id="route-list-title">ALL NINE STOPS</h2></div><span class="route-nine-pill">📍 9 STOPS</span></div>
+      <div class="route-list" id="route-list" aria-live="polite">
+        <article class="route-stop is-current" aria-label="Hole 1, Broadgate — Flat 12 Kitchen; Can of choice; current">
+          <div class="route-stop-number" aria-hidden="true">01</div>
+          <div class="route-stop-content"><div class="route-stop-upper"><span class="route-stop-hole">HOLE 01</span><span class="route-status route-status-current">CURRENT</span></div><h3>Broadgate — Flat 12 Kitchen</h3><p>🍺 Can of choice</p></div>
+        </article>
+        <article class="route-stop is-upcoming" aria-label="Hole 2, Co-op; BuzzBall; upcoming">
+          <div class="route-stop-number" aria-hidden="true">02</div>
+          <div class="route-stop-content"><div class="route-stop-upper"><span class="route-stop-hole">HOLE 02</span><span class="route-status ">UPCOMING</span></div><h3>Co-op</h3><p>🍺 BuzzBall</p></div>
+        </article>
+        <article class="route-stop is-upcoming" aria-label="Hole 3, Rose and Crown; Dark Fruits Cider; upcoming">
+          <div class="route-stop-number" aria-hidden="true">03</div>
+          <div class="route-stop-content"><div class="route-stop-upper"><span class="route-stop-hole">HOLE 03</span><span class="route-status ">UPCOMING</span></div><h3>Rose and Crown</h3><p>🍺 Dark Fruits Cider</p></div>
+        </article>
+        <article class="route-stop is-upcoming" aria-label="Hole 4, Sheaves; Beer; upcoming">
+          <div class="route-stop-number" aria-hidden="true">04</div>
+          <div class="route-stop-content"><div class="route-stop-upper"><span class="route-stop-hole">HOLE 04</span><span class="route-status ">UPCOMING</span></div><h3>Sheaves</h3><p>🍺 Beer</p></div>
+        </article>
+        <article class="route-stop is-upcoming" aria-label="Hole 5, Ragland; Guinness; upcoming">
+          <div class="route-stop-number" aria-hidden="true">05</div>
+          <div class="route-stop-content"><div class="route-stop-upper"><span class="route-stop-hole">HOLE 05</span><span class="route-status ">UPCOMING</span></div><h3>Ragland</h3><p>🍺 Guinness</p></div>
+        </article>
+        <article class="route-stop is-upcoming" aria-label="Hole 6, Bierkeller; White Wine; upcoming">
+          <div class="route-stop-number" aria-hidden="true">06</div>
+          <div class="route-stop-content"><div class="route-stop-upper"><span class="route-stop-hole">HOLE 06</span><span class="route-status ">UPCOMING</span></div><h3>Bierkeller</h3><p>🍺 White Wine</p></div>
+        </article>
+        <article class="route-stop is-upcoming" aria-label="Hole 7, Roebuck (Spoons); Team-shared Pitcher; upcoming">
+          <div class="route-stop-number" aria-hidden="true">07</div>
+          <div class="route-stop-content"><div class="route-stop-upper"><span class="route-stop-hole">HOLE 07</span><span class="route-status ">UPCOMING</span></div><h3>Roebuck (Spoons)</h3><p>🍺 Team-shared Pitcher</p></div>
+        </article>
+        <article class="route-stop is-upcoming" aria-label="Hole 8, Lloyds No. 1 Bar; Double Raspberry Vodka with Cranberry Juice; upcoming">
+          <div class="route-stop-number" aria-hidden="true">08</div>
+          <div class="route-stop-content"><div class="route-stop-upper"><span class="route-stop-hole">HOLE 08</span><span class="route-status ">UPCOMING</span></div><h3>Lloyds No. 1 Bar</h3><p>🍺 Double Raspberry Vodka with Cranberry Juice</p></div>
+        </article>
+        <article class="route-stop is-upcoming" aria-label="Hole 9, Canal House; Teams Choice; upcoming">
+          <div class="route-stop-number" aria-hidden="true">09</div>
+          <div class="route-stop-content"><div class="route-stop-upper"><span class="route-stop-hole">HOLE 09</span><span class="route-status ">UPCOMING</span></div><h3>Canal House</h3><p>🍺 Teams Choice</p></div>
+        </article>
+      </div>
+      <p class="route-note">Pub names and assigned drinks are shown for each hole. Event status is based on the live scoreboard.</p>
+    </section>
+
+    <section class="route-end-note panel"><span class="route-end-icon" aria-hidden="true">🏆</span><div><strong>FINISH LINE: CANAL HOUSE</strong><p>Hole 9 · Teams Choice</p></div><a href="teams.html">Meet the teams <span aria-hidden="true">→</span></a></section>
+    <footer class="site-footer"><div><strong>⛳ BROADGATE PUB GOLF</strong><span>THE NINE-STOP ROUTE</span></div><small>Four teams · Nine holes · One winner</small></footer>
+  </main>
+
+  <nav class="mobile-nav" aria-label="Mobile navigation">
+    <a href="index.html" class="mobile-tab"><span aria-hidden="true">🏠</span><strong>Home</strong></a>
+    <a href="teams.html" class="mobile-tab"><span aria-hidden="true">👥</span><strong>Teams</strong></a>
+    <a href="scorecard.html" class="mobile-tab"><span aria-hidden="true">📋</span><strong>Scores</strong></a>
+    <a href="route.html" class="mobile-tab current" aria-current="page"><span aria-hidden="true">📍</span><strong>Route</strong></a>
+  </nav>
+</body>
+</html>
