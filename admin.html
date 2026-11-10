@@ -8,8 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=5" />
-  <script type="module" src="admin.js?v=1"></script>
+  <link rel="stylesheet" href="style.css?v=6" />
+  <script type="module" src="admin.js?v=2"></script>
 </head>
 <body class="ref-page">
   <div class="top-stripe" aria-hidden="true"></div>
@@ -116,6 +116,26 @@
         <label for="ref-modal-reason" id="ref-reason-label" hidden>Note (optional)</label>
         <input id="ref-modal-reason" type="text" maxlength="100" placeholder="Optional note" hidden />
         <div class="ref-modal-actions"><button class="ref-btn ref-btn-primary" type="submit" id="ref-modal-save">SAVE CHANGE</button><button class="ref-btn ref-btn-outline" type="button" id="ref-modal-clear" hidden>CLEAR SCORE</button></div>
+      </form>
+    </div>
+  </div>
+  <!-- Mobile-friendly on-page confirmations, used by Undo and both Reset actions. -->
+  <div id="ref-confirm-overlay" class="ref-confirm-overlay" hidden>
+    <div class="ref-confirm-panel" role="dialog" aria-modal="true" aria-labelledby="ref-confirm-title" aria-describedby="ref-confirm-message">
+      <div class="ref-confirm-handle" aria-hidden="true"></div>
+      <span class="ref-overline">REF EVENT CONTROL</span>
+      <h2 id="ref-confirm-title">Confirm action</h2>
+      <p id="ref-confirm-message"></p>
+      <form id="ref-confirm-form">
+        <div id="ref-confirm-entry-row" class="ref-confirm-entry-row" hidden>
+          <label for="ref-confirm-entry">Type <strong>RESET</strong> to confirm</label>
+          <input id="ref-confirm-entry" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="RESET" />
+          <p id="ref-confirm-error" class="ref-confirm-error" hidden>Please type RESET exactly.</p>
+        </div>
+        <div class="ref-confirm-actions">
+          <button type="button" class="ref-btn ref-btn-outline" id="ref-confirm-cancel">CANCEL</button>
+          <button type="submit" class="ref-btn ref-btn-primary" id="ref-confirm-accept">CONFIRM</button>
+        </div>
       </form>
     </div>
   </div>

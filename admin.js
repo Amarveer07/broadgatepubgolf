@@ -126,6 +126,62 @@ async function guarded(action) {
   }
 }
 
+// Mobile-friendly confirmation sheets: do not rely on browser confirm()/prompt().
+const confirmUI = {
+  overlay: $("ref-confirm-overlay"),
+  form: $("ref-confirm-form"),
+  title: $("ref-confirm-title"),
+  message: $("ref-confirm-message"),
+  entryRow: $("ref-confirm-entry-row"),
+  entry: $("ref-confirm-entry"),
+  error: $("ref-confirm-error"),
+  accept: $("ref-confirm-accept"),
+  cancel: $("ref-confirm-cancel")
+};
+let pendingConfirmation = null;
+
+function finishConfirmation(approved) {
+  if (!pendingConfirmation) return;
+  const { resolve, requiredText } = pendingConfirmation;
+  if (approved && requiredText && confirmUI.entry.value.trim() !== requiredText) {
+    confirmUI.error.hidden = false;
+    confirmUI.entry.focus();
+    return;
+  }
+  pendingConfirmation = null;
+  confirmUI.overlay.hidden = true;
+  confirmUI.error.hidden = true;
+  document.body.classList.remove("ref-modal-open");
+  resolve(approved);
+}
+
+function requestConfirmation({ title, message, confirmText, requiredText = null, danger = false }) {
+  if (pendingConfirmation) return Promise.resolve(false);
+  confirmUI.title.textContent = title;
+  confirmUI.message.textContent = message;
+  confirmUI.accept.textContent = confirmText;
+  confirmUI.accept.classList.toggle("ref-confirm-danger", danger);
+  confirmUI.entryRow.hidden = !requiredText;
+  confirmUI.entry.value = "";
+  confirmUI.error.hidden = true;
+  confirmUI.overlay.hidden = false;
+  document.body.classList.add("ref-modal-open");
+  return new Promise((resolve) => {
+    pendingConfirmation = { resolve, requiredText };
+  });
+}
+confirmUI.form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  finishConfirmation(true);
+});
+confirmUI.cancel.addEventListener("click", () => finishConfirmation(false));
+confirmUI.overlay.addEventListener("click", (event) => {
+  if (event.target === confirmUI.overlay) finishConfirmation(false);
+});
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && pendingConfirmation) finishConfirmation(false);
+});
+
 // A single undo snapshot restores both teams and event progress together.
 // One new action replaces the previous undo, by design.
 async function changeWithUndo(changes, description, type) {
@@ -442,7 +498,11 @@ $("ref-undo").addEventListener("click", () => guarded(async () => {
   if (undo.kind !== "snapshot" || !undo.beforeTeams || !undo.beforeSettings) {
     throw new Error("This action cannot be undone. Please check your event data.");
   }
-  const confirmUndo = confirm(`Undo the last change?\n\n${undo.description || "Recent action"}`);
+  const confirmUndo = await requestConfirmation({
+    title: "Undo last action?",
+    message: undo.description || "Reverse the most recent change.",
+    confirmText: "YES, UNDO"
+  });
   if (!confirmUndo) return;
   await update(rootRef, {
     teams: undo.beforeTeams,
@@ -474,13 +534,25 @@ function clearedTeams() {
   return reset;
 }
 $("ref-reset-scores").addEventListener("click", () => guarded(async () => {
-  if (!confirm("Reset all scores and progress? This is undoable as the next action.")) return;
+  const approved = await requestConfirmation({
+    title: "Reset scores and progress?",
+    message: "This clears all team scores and hole progress. You can undo it immediately afterward.",
+    confirmText: "RESET SCORES",
+    danger: true
+  });
+  if (!approved) return;
   const changes = { teams: clearedTeams(), settings: { ...state.settings, ...DEFAULT_SETTINGS } };
   await changeWithUndo(changes, "All scores and progress reset", "reset");
 }));
 $("ref-full-reset").addEventListener("click", () => guarded(async () => {
-  const answer = prompt('This clears ALL scores, progress and activity history.\nType RESET to continue:');
-  if (answer !== "RESET") return;
+  const approved = await requestConfirmation({
+    title: "Start a fresh event?",
+    message: "This permanently clears all scores, progress, activity history and Undo. Team names and the pub route stay the same. Type RESET below to confirm.",
+    confirmText: "START FRESH EVENT",
+    requiredText: "RESET",
+    danger: true
+  });
+  if (!approved) return;
   await update(rootRef, {
     teams: clearedTeams(),
     settings: { ...state.settings, ...DEFAULT_SETTINGS },

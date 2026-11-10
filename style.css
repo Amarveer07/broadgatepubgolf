@@ -340,3 +340,26 @@ a.ref-pill:hover,a.ref-pill:focus-visible{background:#e0f4e7;color:#137646}
 }
 @media(max-width:360px){.ref-sheet-stop strong{font-size:9px}.ref-sheet-stop small{font-size:8px}.ref-team-label span{font-size:11px}.ref-stepper input{width:50px}.ref-step-btn{width:31px}.ref-current-row h2{font-size:15px}}
 @media(max-width:365px){.ref-header-badge{display:none}}
+
+/* Mobile-safe in-page confirmation sheets for Undo / Reset / Fresh Event */
+.ref-confirm-overlay { position:fixed; inset:0; z-index:700; display:flex; align-items:center; justify-content:center; padding:18px; background:rgba(9,20,40,.75); }
+.ref-confirm-overlay[hidden], .ref-confirm-entry-row[hidden], .ref-confirm-error[hidden] { display:none!important; }
+.ref-confirm-panel { width:min(100%,430px); background:#fff; border-radius:18px; padding:23px; box-shadow:0 22px 60px rgba(0,0,0,.32); max-height:90dvh; overflow-y:auto; }
+.ref-confirm-handle { display:none; }
+.ref-confirm-panel h2 { margin:8px 0 12px; color:#14233e; font:900 29px/1 var(--display); }
+.ref-confirm-panel>p { font-size:14px; line-height:1.55; color:#46576d; margin:0 0 18px; }
+.ref-confirm-entry-row { display:grid; gap:8px; margin-bottom:16px; }
+.ref-confirm-entry-row label { font-size:13px; font-weight:800; color:#2b3f5c; }
+.ref-confirm-entry-row input { width:100%; padding:13px; border:1.5px solid #b9c6d8; border-radius:9px; font:800 16px var(--body); color:#14233e; }
+.ref-confirm-error { color:#bc2635; font-weight:800; font-size:12px; margin:0; }
+.ref-confirm-actions { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.ref-confirm-actions .ref-btn { min-height:51px; }
+.ref-confirm-danger { background:#bd2035!important; color:#fff!important; }
+@media (max-width:640px) {
+  .ref-confirm-overlay { align-items:flex-end; padding:0; }
+  .ref-confirm-panel { width:100%; max-height:90dvh; border-radius:20px 20px 0 0; padding:21px 19px calc(24px + env(safe-area-inset-bottom)); }
+  .ref-confirm-handle { display:block; width:50px; height:5px; border-radius:99px; background:#cad5e3; margin:0 auto 17px; }
+  .ref-confirm-actions { grid-template-columns:1fr; }
+  .ref-confirm-actions .ref-btn { min-height:52px; }
+  .ref-confirm-actions #ref-confirm-cancel { order:2; }
+}
