@@ -1,5 +1,4 @@
-// BROADGATE PUB GOLF — shared event settings and Firebase connection.
-// We will reuse this file on the Teams, Scorecard, Route and Ref pages.
+// Broadgate Pub Golf — shared Firebase connection, roster, and scoring rules.
 import { initializeApp } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-app.js";
 import { getDatabase } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-database.js";
 
@@ -15,19 +14,13 @@ const firebaseConfig = {
 
 export const app = initializeApp(firebaseConfig);
 export const database = getDatabase(app);
-
-export const eventName = "Broadgate Pub Golf";
 export const TOTAL_HOLES = 9;
-
-// Team names, colours and members are already finalised.
-// Player photos will be added later without changing the layout.
+export const SCHEMA_VERSION = 2;
 export const TEAMS = [
-  { id: "red", name: "Team Red", short: "RED", colour: "#d91f30", members: ["Nelly", "Holly", "Harry", "Isaac"] },
-  { id: "green", name: "Team Green", short: "GRN", colour: "#128447", members: ["Emelio", "George", "Henry", "Rohan"] },
-  { id: "blue", name: "Team Blue", short: "BLU", colour: "#2365eb", members: ["Lizzie", "Jacob", "Alex", "Sophie"] },
-  { id: "white", name: "Team White", short: "WHT", colour: "#ffffff", members: ["Sam", "Freddie", "Maggie", "Loran"] }
+  { id: "blue", name: "Team Blue", short: "BLU", colour: "#2563eb", members: ["Lizzie", "Kayode", "Alex", "Henry"] },
+  { id: "black", name: "Team Black", short: "BLK", colour: "#161b27", members: ["Nelly", "Holly", "Harry", "Isaac", "Rohan"] },
+  { id: "red", name: "Team Red", short: "RED", colour: "#d62234", members: ["Emelio", "George", "William", "Maggie", "Sophie"] }
 ];
-
 export const HOLES = [
   { number: 1, pub: "Broadgate — Flat 12 Kitchen", drink: "Can of choice" },
   { number: 2, pub: "Co-op", drink: "BuzzBall" },
@@ -39,31 +32,66 @@ export const HOLES = [
   { number: 8, pub: "Lloyds No. 1 Bar", drink: "Double Raspberry Vodka with Cranberry Juice" },
   { number: 9, pub: "Canal House", drink: "Teams Choice" }
 ];
-
 export const DEFAULT_SETTINGS = {
   currentHole: 1,
   completedHoles: 0,
-  totalHoles: TOTAL_HOLES
+  totalHoles: TOTAL_HOLES,
+  schemaVersion: SCHEMA_VERSION
 };
 
-// Total = normal hole strokes + penalties - challenge deductions.
-// Keeping adjustments separate makes the scorecard easy to audit.
-export function readTeamScore(teamRecord = {}) {
-  const holeScores = teamRecord.holeScores || {};
-  const recordedScores = Object.values(holeScores)
-    .map(Number)
-    .filter(Number.isFinite);
-  const base = recordedScores.reduce((sum, n) => sum + n, 0);
-  const penalties = Number(teamRecord.penalties || 0);
-  const challenges = Number(teamRecord.challenges || 0);
-  const hasActivity = recordedScores.length > 0 || penalties !== 0 || challenges !== 0;
+export function playerKey(name) {
+  return String(name).trim().toLowerCase().replace(/[^a-z0-9]+/g, "-");
+}
+export function hasOwn(object, key) {
+  return Object.prototype.hasOwnProperty.call(object || {}, key);
+}
+export function formatScore(value) {
+  return Number.isFinite(value) ? Number(value).toFixed(2) : "–";
+}
+export function holeBreakdown(record = {}, team, holeNumber) {
+  const scores = record.playerScores?.[holeNumber] || {};
+  const individualPenalties = record.playerPenalties?.[holeNumber] || {};
+  const wholeTeamPenalty = Number(record.teamPenalties?.[holeNumber] || 0);
+  const players = team.members || [];
+  const keys = players.map(playerKey);
+  const complete = keys.length > 0 && keys.every((key) => {
+    const value = Number(scores[key]);
+    return hasOwn(scores, key) && Number.isInteger(value) && value >= 0;
+  });
+  const entered = keys.filter((key) => hasOwn(scores, key) && Number.isInteger(Number(scores[key]))).length;
+  if (!complete) return { complete: false, entered, count: keys.length, average: null, rawAverage: null, adjustment: null };
+  const strokes = keys.reduce((sum, key) => sum + Number(scores[key]), 0);
+  const individualTotal = keys.reduce((sum, key) => sum + Number(individualPenalties[key] || 0), 0);
+  const rawAverage = strokes / keys.length;
+  const adjustment = individualTotal / keys.length + wholeTeamPenalty;
+  return { complete: true, entered, count: keys.length, average: rawAverage + adjustment, rawAverage, adjustment };
+}
+
+// Rankings count only officially completed holes, preventing a partial current
+// hole from unfairly changing the leaderboard. The public scorecard can still
+// show a provisional hole average once all its players have entered a score.
+export function readTeamScore(record = {}, team, completedHoles = 0) {
+  const holeScores = {};
+  const progress = {};
+  let total = 0;
+  let completedWithScores = 0;
+  for (let hole = 1; hole <= TOTAL_HOLES; hole++) {
+    const result = holeBreakdown(record, team, hole);
+    progress[hole] = result;
+    if (!result.complete) continue;
+    holeScores[hole] = result.average;
+    if (hole <= completedHoles) {
+      total += result.average;
+      completedWithScores++;
+    }
+  }
   return {
     holeScores,
-    base,
-    penalties,
-    challenges,
-    total: base + penalties - challenges,
-    holesPlayed: Number(teamRecord.holesPlayed || 0),
-    hasActivity
+    progress,
+    total,
+    holesPlayed: completedHoles,
+    hasActivity: completedHoles > 0 && completedWithScores > 0,
+    completeCount: completedWithScores,
+    playerCount: team.members.length
   };
 }

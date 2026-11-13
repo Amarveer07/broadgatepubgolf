@@ -1,5 +1,5 @@
 import { ref, onValue } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-database.js";
-import { database, HOLES, TOTAL_HOLES, DEFAULT_SETTINGS } from "./config.js?v=1";
+import { database, HOLES, TOTAL_HOLES, DEFAULT_SETTINGS } from "./config.js?v=8";
 
 // The public route is read-only. Ref score changes are published through Firebase.
 const list = document.getElementById('route-list');

@@ -9,8 +9,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=5" />
-  <script type="module" src="scorecard.js?v=1"></script>
+  <link rel="stylesheet" href="style.css?v=8" />
+  <script type="module" src="scorecard.js?v=8"></script>
 </head>
 <body>
   <div class="top-stripe" aria-hidden="true"></div>
@@ -35,8 +35,8 @@
       <div class="sc-hero-icons" aria-hidden="true">⛳ <span>🍺</span></div>
       <span class="sc-kicker">THE BROADGATE FLATMATES PRESENT</span>
       <h1 id="sc-title">THE <span>SCORECARD</span></h1>
-      <p>9 holes. 4 teams. Every stroke counts.</p>
-      <div class="sc-colour-bar" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+      <p>9 holes. 3 teams. Lowest average wins.</p>
+      <div class="sc-colour-bar" aria-hidden="true"><span></span><span></span><span></span></div>
     </section>
 
     <section class="sc-status panel" aria-labelledby="sc-current-title">
@@ -55,46 +55,26 @@
     </section>
 
     <section class="sc-sheet-panel panel" aria-labelledby="sc-sheet-title">
-      <div class="sc-section-head"><div><span class="sc-overline">OFFICIAL LIVE RESULTS</span><h2 id="sc-sheet-title">FULL SCORECARD</h2></div><span class="sc-sheet-tag">⛳ 9 HOLES</span></div>
-      <div class="sc-sheet-explainer">Each number is the <strong>whole team's score</strong> at that hole. Blank holes show a dash.</div>
+      <div class="sc-section-head"><div><span class="sc-overline">LIVE TEAM AVERAGES</span><h2 id="sc-sheet-title">FULL SCORECARD</h2></div><span class="sc-sheet-tag">⛳ 9 HOLES</span></div>
+      <div class="sc-sheet-explainer">Each number is the <strong>average of each player’s strokes</strong>, including any adjustments. Blank holes show a dash.</div>
       <div class="sc-table-wrap">
         <table class="sc-table" aria-label="Pub golf team scores by hole">
-          <colgroup><col class="sc-hole-column" /><col span="4" /></colgroup>
-          <thead><tr><th scope="col" class="sc-hole-head">HOLE · PUB · DRINK</th><th scope="col" class="sc-head-red">RED</th><th scope="col" class="sc-head-green">GREEN</th><th scope="col" class="sc-head-blue">BLUE</th><th scope="col" class="sc-head-white">WHITE</th></tr></thead>
-          <tbody id="sc-table-body">
-            <tr class="sc-row-current"><th scope="row"><span class="sc-hole-num">01</span><span class="sc-hole-details"><strong>Flat 12 Kitchen</strong><small>Can of choice</small></span></th><td>–</td><td>–</td><td>–</td><td>–</td></tr>
-            <tr><th scope="row"><span class="sc-hole-num">02</span><span class="sc-hole-details"><strong>Co-op</strong><small>BuzzBall</small></span></th><td>–</td><td>–</td><td>–</td><td>–</td></tr>
-            <tr><th scope="row"><span class="sc-hole-num">03</span><span class="sc-hole-details"><strong>Rose and Crown</strong><small>Dark Fruits Cider</small></span></th><td>–</td><td>–</td><td>–</td><td>–</td></tr>
-            <tr><th scope="row"><span class="sc-hole-num">04</span><span class="sc-hole-details"><strong>Sheaves</strong><small>Beer</small></span></th><td>–</td><td>–</td><td>–</td><td>–</td></tr>
-            <tr><th scope="row"><span class="sc-hole-num">05</span><span class="sc-hole-details"><strong>Ragland</strong><small>Guinness</small></span></th><td>–</td><td>–</td><td>–</td><td>–</td></tr>
-            <tr><th scope="row"><span class="sc-hole-num">06</span><span class="sc-hole-details"><strong>Bierkeller</strong><small>White Wine</small></span></th><td>–</td><td>–</td><td>–</td><td>–</td></tr>
-            <tr><th scope="row"><span class="sc-hole-num">07</span><span class="sc-hole-details"><strong>Roebuck (Spoons)</strong><small>Team-shared Pitcher</small></span></th><td>–</td><td>–</td><td>–</td><td>–</td></tr>
-            <tr><th scope="row"><span class="sc-hole-num">08</span><span class="sc-hole-details"><strong>Lloyds No. 1 Bar</strong><small>Double Raspberry Vodka with Cranberry Juice</small></span></th><td>–</td><td>–</td><td>–</td><td>–</td></tr>
-            <tr><th scope="row"><span class="sc-hole-num">09</span><span class="sc-hole-details"><strong>Canal House</strong><small>Teams Choice</small></span></th><td>–</td><td>–</td><td>–</td><td>–</td></tr>
-          </tbody>
-          <tfoot id="sc-table-foot">
-            <tr><th scope="row">BASE</th><td>–</td><td>–</td><td>–</td><td>–</td></tr>
-            <tr><th scope="row">PENALTIES</th><td>–</td><td>–</td><td>–</td><td>–</td></tr>
-            <tr><th scope="row">CHALLENGES</th><td>–</td><td>–</td><td>–</td><td>–</td></tr>
-            <tr class="sc-grand-total"><th scope="row">TOTAL</th><td>–</td><td>–</td><td>–</td><td>–</td></tr>
-          </tfoot>
+          <colgroup><col class="sc-hole-column" /><col span="3" /></colgroup>
+          <thead><tr><th scope="col" class="sc-hole-head">HOLE · PUB · DRINK</th><th scope="col" class="sc-head-blue">BLUE</th><th scope="col" class="sc-head-black">BLACK</th><th scope="col" class="sc-head-red">RED</th></tr></thead>
+          <tbody id="sc-table-body"><tr><td colspan="4">Loading scores…</td></tr></tbody>
+          <tfoot id="sc-table-foot"></tfoot>
         </table>
       </div>
-      <p class="sc-formula"><strong>Total = hole strokes + penalties − challenges.</strong> Lowest total wins. Scores refresh automatically when the ref makes changes.</p>
+      <p class="sc-formula"><strong>Lowest combined team average wins.</strong> Official totals update when each hole is completed.</p>
     </section>
 
     <section class="sc-ranking-section" aria-labelledby="sc-ranking-title">
       <div class="sc-section-head"><div><span class="sc-overline">AFTER THE LATEST SCORES</span><h2 id="sc-ranking-title">LIVE TOTALS</h2></div></div>
-      <div class="sc-rank-grid" id="sc-rank-grid">
-        <div class="sc-rank-card"><strong>Team Red</strong><span>—</span></div>
-        <div class="sc-rank-card"><strong>Team Green</strong><span>—</span></div>
-        <div class="sc-rank-card"><strong>Team Blue</strong><span>—</span></div>
-        <div class="sc-rank-card"><strong>Team White</strong><span>—</span></div>
-      </div>
-      <a class="sc-view-teams" href="teams.html">Meet the four teams <span aria-hidden="true">→</span></a>
+      <div class="sc-rank-grid" id="sc-rank-grid"></div>
+      <a class="sc-view-teams" href="teams.html">Meet the three teams <span aria-hidden="true">→</span></a>
     </section>
 
-    <footer class="site-footer"><div><strong>⛳ BROADGATE PUB GOLF</strong><span>THE LIVE SCORECARD</span></div><small>Four teams · Nine holes · One winner</small></footer>
+    <footer class="site-footer"><div><strong>⛳ BROADGATE PUB GOLF</strong><span>THE LIVE SCORECARD</span></div><small>Three teams · Nine holes · One winner</small></footer>
   </main>
 
   <nav class="mobile-nav" aria-label="Mobile navigation">

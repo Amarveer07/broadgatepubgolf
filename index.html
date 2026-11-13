@@ -9,8 +9,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=5" />
-  <script type="module" src="app.js?v=2"></script>
+  <link rel="stylesheet" href="style.css?v=8" />
+  <script type="module" src="app.js?v=8"></script>
 </head>
 <body>
   <div class="top-stripe" aria-hidden="true"></div>
@@ -40,14 +40,14 @@
         <div class="hero-title-text"><h1 id="hero-title">BROADGATE</h1><div class="hero-ribbon">PUB GOLF</div></div>
         <span class="hero-illustration" aria-hidden="true">🏆</span>
       </div>
-      <div class="hero-bottom"><span class="laurel">❧</span><span>4 TEAMS · 16 PLAYERS · 9 HOLES</span><span class="laurel">❧</span></div>
+      <div class="hero-bottom"><span class="laurel">❧</span><span>3 TEAMS · 14 PLAYERS · 9 HOLES</span><span class="laurel">❧</span></div>
       <div class="hero-turf" aria-hidden="true"></div>
     </section>
 
     <div class="dashboard-grid">
       <section class="panel standings" aria-labelledby="standings-title">
         <div class="panel-heading"><h2 id="standings-title"><span aria-hidden="true">🏆</span> TEAM STANDINGS</h2><span class="panel-subtitle">LOWEST SCORE WINS</span></div>
-        <div class="table-heading" aria-hidden="true"><span>RANK / TEAM</span><span>HOLES</span><span>STROKES</span></div>
+        <div class="table-heading" aria-hidden="true"><span>RANK / TEAM</span><span>HOLES</span><span>AVG TOTAL</span></div>
         <div id="leaderboard" class="leaderboard" aria-live="polite">
           <div class="empty-loading">Loading the leaderboard…</div>
         </div>
@@ -72,20 +72,20 @@
     </div>
 
     <section class="quick-stats" aria-label="Event at a glance">
-      <div class="stat-card red-stat"><span aria-hidden="true">👥</span><strong>4</strong><small>TEAMS</small></div>
+      <div class="stat-card red-stat"><span aria-hidden="true">👥</span><strong>3</strong><small>TEAMS</small></div>
       <div class="stat-card green-stat"><span aria-hidden="true">🍺</span><strong>9</strong><small>STOPS</small></div>
       <div class="stat-card blue-stat"><span aria-hidden="true">🚩</span><strong>9</strong><small>HOLES</small></div>
-      <div class="stat-card dark-stat"><span aria-hidden="true">⛳</span><strong>16</strong><small>PLAYERS</small></div>
+      <div class="stat-card dark-stat"><span aria-hidden="true">⛳</span><strong>14</strong><small>PLAYERS</small></div>
     </section>
 
     <section class="panel scorecard-preview" aria-labelledby="scorecard-title">
-      <div class="panel-heading scorecard-heading"><div><h2 id="scorecard-title"><span aria-hidden="true">🗒️</span> NINE-HOLE SCORECARD</h2><p>Every team, every hole. Penalties and challenge deductions stay separate.</p></div><span class="panel-subtitle">LIVE SCORES</span></div>
+      <div class="panel-heading scorecard-heading"><div><h2 id="scorecard-title"><span aria-hidden="true">🗒️</span> NINE-HOLE SCORECARD</h2><p>Every team, every hole. One adjusted average per team, per hole.</p></div><span class="panel-subtitle">LIVE SCORES</span></div>
       <table class="golf-table" id="golf-table">
-        <thead><tr><th scope="col">HOLE</th><th class="red-cell" scope="col">RED</th><th class="green-cell" scope="col">GREEN</th><th class="blue-cell" scope="col">BLUE</th><th class="white-cell" scope="col">WHITE</th></tr></thead>
+        <thead><tr><th scope="col">HOLE</th><th class="blue-cell" scope="col">BLUE</th><th class="black-cell" scope="col">BLACK</th><th class="red-cell" scope="col">RED</th></tr></thead>
         <tbody id="scorecard-body"></tbody>
         <tfoot id="scorecard-foot"></tfoot>
       </table>
-      <p class="scorecard-hint">A dash means no score entered. <a href="scorecard.html" class="preview-open-link">Open the full nine-hole scorecard →</a></p>
+      <p class="scorecard-hint">A dash means the team’s scores are incomplete. <a href="scorecard.html" class="preview-open-link">Open the full nine-hole scorecard →</a></p>
     </section>
     <footer class="site-footer"><div><strong>⛳ BROADGATE PUB GOLF</strong><span>LIVE SCOREBOARD</span></div><small>Built for the flatmates · Keep it on the fairway</small></footer>
   </main>

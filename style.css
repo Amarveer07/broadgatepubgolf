@@ -363,3 +363,94 @@ a.ref-pill:hover,a.ref-pill:focus-visible{background:#e0f4e7;color:#137646}
   .ref-confirm-actions .ref-btn { min-height:52px; }
   .ref-confirm-actions #ref-confirm-cancel { order:2; }
 }
+
+/* ===============================================
+   BROADGATE v2 — THREE TEAMS + MOBILE REF SCORING
+   White sporting identity; responsive 3-team tables
+   =============================================== */
+.golf-table thead th.black-cell,
+.sc-table thead .sc-head-black,
+.ref-sheet thead .ref-black-h {background:#181d29!important;color:#fff!important}
+.sc-rank-black{--rank-colour:#181d29}
+.team-card-black{--team-accent:#181d29}
+.golf-table thead th.blue-cell,.sc-table thead .sc-head-blue,.ref-sheet thead .ref-blue-h{background:#2563eb!important;color:#fff!important}
+.golf-table thead th.red-cell,.sc-table thead .sc-head-red,.ref-sheet thead .ref-red-h{background:#d62234!important;color:#fff!important}
+.sc-rank-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.sc-sheet-panel .sc-hole-column{width:40%}
+.sc-table,.golf-table,.ref-sheet{font-variant-numeric:tabular-nums}
+.sc-table td,.golf-table td{font-weight:800}
+.sc-table td,.ref-sheet td{overflow-wrap:normal}
+.teams-colour-line span:nth-child(1),.route-hero-stripes i:nth-child(1),.sc-colour-bar span:nth-child(1){background:#2563eb}
+.teams-colour-line span:nth-child(2),.route-hero-stripes i:nth-child(2),.sc-colour-bar span:nth-child(2){background:#181d29}
+.teams-colour-line span:nth-child(3),.route-hero-stripes i:nth-child(3),.sc-colour-bar span:nth-child(3){background:#d62234}
+.bpg-member-legend{font-size:11px;color:#66758b;margin-bottom:10px}
+.bpg-member-list{display:grid;gap:7px;margin-bottom:12px}
+.bpg-member-detail{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 10px;border-radius:9px;background:#f1f5fa;font-size:12px}
+.bpg-member-detail span{color:#46536a;letter-spacing:1px;font-variant-numeric:tabular-nums;font-size:11px;overflow-wrap:anywhere;text-align:right}
+.bpg-setup-warning{border-radius:13px;border:1px solid #ffd5a0;background:#fff6e6;padding:14px 17px;margin:15px 0;color:#6f4d0d}
+.bpg-setup-warning strong{display:block;font-size:14px}
+.bpg-setup-warning p{margin:6px 0 0;font-size:12px;line-height:1.55}
+.bpg-entry{padding:18px;margin:18px 0}
+.bpg-hole-nav{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:9px;margin:12px 0}
+.bpg-hole-nav .ref-btn{min-height:44px;white-space:nowrap;padding:9px 5px;font-size:12px}
+#ref-view-label{font:800 13px var(--display);white-space:nowrap;color:#27344e}
+.bpg-return-current{display:block;width:100%;padding:10px;margin:0 0 10px;border:1px solid #bbd2fa;border-radius:9px;background:#eef5ff;color:#1454b1;font-weight:800;cursor:pointer}
+.bpg-team-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin:13px 0 11px}
+.bpg-team-tab{border:2px solid #dde4ec;background:#fff;padding:10px 3px;border-radius:12px;min-height:67px;display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;color:#23314c}
+.bpg-team-tab strong{font:900 18px var(--display);letter-spacing:.3px}
+.bpg-team-tab small{font-size:11px;color:#66758c}
+.bpg-team-tab.is-selected{background:#f1f5fb;border-color:#2563eb}
+.bpg-team-tab.bpg-team-black.is-selected{border-color:#181d29}
+.bpg-team-tab.bpg-team-red.is-selected{border-color:#d62234}
+.bpg-team-swatch{display:block;width:11px;height:11px;border-radius:50%;background:#2563eb}
+.bpg-team-black .bpg-team-swatch{background:#181d29}
+.bpg-team-red .bpg-team-swatch{background:#d62234}
+.bpg-player-inputs{background:#f7f9fc;border:1px solid #e0e5ee;border-radius:13px;padding:12px}
+.bpg-inputs-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px}
+.bpg-inputs-heading strong{font:900 22px var(--display);color:#17243d}
+.bpg-inputs-heading span{font-size:11px;color:#647187}
+.bpg-player-row{display:flex;justify-content:space-between;align-items:center;gap:9px;border-bottom:1px solid #e1e6ee;padding:8px 0;min-height:56px}
+.bpg-player-row label{font-size:14px;font-weight:800;color:#1c2a40;min-width:0}
+.bpg-player-stepper{display:flex;gap:4px;align-items:center;flex-shrink:0}
+.bpg-player-stepper button{width:42px;height:43px;border:1px solid #c7d1e0;border-radius:9px;background:#fff;color:#1c345e;font-size:21px;font-weight:900;cursor:pointer;touch-action:manipulation}
+.bpg-player-stepper button:active{background:#e7eef9}
+.bpg-player-stepper input{width:59px;min-height:43px;padding:4px 3px;border:1px solid #c7d1e0;border-radius:9px;background:#fff;text-align:center;font-weight:900;font-size:18px;color:#16243b;font-variant-numeric:tabular-nums;-moz-appearance:textfield}
+.bpg-player-stepper input::-webkit-inner-spin-button,.bpg-player-stepper input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+.bpg-team-average{display:flex;align-items:center;justify-content:space-between;margin-top:10px;font-size:12px;color:#55647d}
+.bpg-team-average strong{font:900 27px var(--display);color:#132744}
+.bpg-primary-buttons{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.bpg-primary-buttons .ref-btn{font-size:12px;padding:12px 6px;min-height:46px}
+.bpg-entry .ref-btn-complete{width:100%;min-height:54px;font-size:14px}
+.bpg-draft-label{font-size:11px;color:#69768c;margin:8px 0 0;min-height:14px}
+.bpg-score-panel{margin:17px 0;padding:16px}
+.bpg-score-panel .ref-sheet thead th:first-child{width:42%}
+.bpg-score-panel .ref-sheet{font-size:12px}
+.bpg-score-panel .ref-cell-button{min-width:0;width:100%;font-variant-numeric:tabular-nums}
+.bpg-more-controls{padding:0;margin:14px 0;border-radius:14px;overflow:hidden}
+.bpg-more-controls summary{padding:17px;cursor:pointer;list-style:none;font-weight:900;color:#182943;display:flex;justify-content:space-between;gap:8px;align-items:center}
+.bpg-more-controls summary::-webkit-details-marker{display:none}
+.bpg-more-controls summary span{font-size:11px;color:#76849a;font-weight:600}
+.bpg-more-body{border-top:1px solid #e1e6ef;padding:14px;display:grid;gap:9px}
+.bpg-penalty-panel{background:#f7f9fd;border:1px solid #dfe6ef;padding:14px;border-radius:10px}
+.bpg-penalty-panel form{display:grid;gap:8px}
+.bpg-penalty-panel label{font-size:12px;font-weight:800}
+.bpg-penalty-panel input,.bpg-penalty-panel select{width:100%;min-height:43px;border:1px solid #cbd4e1;border-radius:9px;padding:9px;background:#fff;font-size:15px}
+.bpg-penalty-panel .ref-btn{margin-top:6px}
+.bpg-more-divider{height:1px;background:#e2e8f1;margin:3px 0}
+.bpg-setup-warning[hidden],.bpg-penalty-panel[hidden],.bpg-return-current[hidden],.ref-confirm-overlay[hidden],#ref-app[hidden],#ref-login-view[hidden]{display:none!important}
+@media(max-width:650px){
+  .bpg-entry,.bpg-score-panel{padding:12px;margin:13px 0}
+  .bpg-hole-nav{gap:5px}
+  .bpg-hole-nav .ref-btn{font-size:11px}
+  .bpg-player-row label{font-size:13px}
+  .bpg-player-stepper button{width:39px;height:42px}
+  .bpg-player-stepper input{width:54px;min-height:42px}
+  .bpg-score-panel .ref-sheet thead th:first-child{width:39%}
+  .bpg-score-panel .ref-sheet thead th{font-size:13px}
+  .bpg-score-panel .ref-sheet th:first-child{padding-left:5px}
+  .sc-rank-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .sc-table thead th{font-size:16px}
+  .sc-table th.sc-hole-head{padding-left:6px}
+  .golf-table thead th{font-size:17px}
+}
+@media(min-width:1050px){.team-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}

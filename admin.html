@@ -8,136 +8,88 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=6" />
-  <script type="module" src="admin.js?v=2"></script>
+  <link rel="stylesheet" href="style.css?v=8" />
+  <script type="module" src="admin.js?v=8"></script>
 </head>
 <body class="ref-page">
   <div class="top-stripe" aria-hidden="true"></div>
-  <header class="site-header">
-    <div class="header-inner wrap">
-      <a class="brand" href="index.html" aria-label="Broadgate Pub Golf home">
-        <span class="brand-icon" aria-hidden="true">⛳</span>
-        <span class="brand-type"><strong>BROADGATE</strong><small>PUB GOLF</small></span>
-      </a>
-      <span class="ref-header-badge">🔒 REF MODE</span>
-      <a class="ref-home-link" href="index.html">Public site ↗</a>
-    </div>
-  </header>
-
+  <header class="site-header"><div class="header-inner wrap">
+    <a class="brand" href="index.html"><span class="brand-icon">⛳</span><span class="brand-type"><strong>BROADGATE</strong><small>PUB GOLF</small></span></a>
+    <span class="ref-header-badge">🔒 REF MODE</span><a class="ref-home-link" href="index.html">Public site ↗</a>
+  </div></header>
   <main class="wrap ref-main">
-    <section class="ref-login panel" id="ref-login-view" aria-labelledby="ref-login-title">
-      <div class="ref-login-symbol" aria-hidden="true">⛳</div>
-      <span class="ref-overline">OFFICIAL EVENT CONTROL</span>
-      <h1 id="ref-login-title">REF SIGN IN</h1>
-      <p>Only the authorised ref can change scores. Everyone else can follow the live public website without signing in.</p>
+    <section id="ref-login-view" class="ref-login panel" aria-labelledby="login-title">
+      <div class="ref-login-symbol">⛳</div><span class="ref-overline">OFFICIAL EVENT CONTROL</span><h1 id="login-title">REF SIGN IN</h1>
+      <p>Sign in with your Broadgate Pub Golf Firebase ref account.</p>
       <form id="ref-login-form" class="ref-login-form">
-        <label for="ref-email">Email address</label>
-        <input id="ref-email" name="email" type="email" autocomplete="username" required placeholder="Your Firebase ref email" />
-        <label for="ref-password">Password</label>
-        <input id="ref-password" name="password" type="password" autocomplete="current-password" required placeholder="Your ref password" />
-        <button class="ref-btn ref-btn-primary" id="ref-login-submit" type="submit">SIGN IN TO REF MODE</button>
-        <p class="ref-feedback ref-feedback-error" id="ref-login-error" role="alert" hidden></p>
+        <label for="ref-email">Email</label><input type="email" id="ref-email" autocomplete="username" required />
+        <label for="ref-password">Password</label><input type="password" id="ref-password" autocomplete="current-password" required />
+        <button type="submit" id="ref-login-submit" class="ref-btn ref-btn-primary">SIGN IN</button>
+        <p id="ref-login-error" class="ref-feedback ref-feedback-error" role="alert" hidden></p>
       </form>
     </section>
 
     <div id="ref-app" hidden>
-      <div class="ref-topbar">
-        <span class="ref-status"><span class="live-dot connecting" id="ref-live-dot"></span><span id="ref-live-text">Connecting…</span></span>
-        <button type="button" class="ref-signout" id="ref-signout">Sign out</button>
-      </div>
-
-      <section class="ref-hero" aria-labelledby="ref-title">
-        <div class="ref-hero-top"><span class="ref-overline">BROADGATE PUB GOLF • LIVE EVENT</span><span class="ref-count" id="ref-hole-count">HOLE 1 OF 9</span></div>
-        <h1 id="ref-title">REF DASHBOARD</h1>
-        <div class="ref-current-row"><div class="ref-hero-hole"><span>HOLE</span><strong id="ref-current-hole">01</strong></div><div><span class="ref-overline">CURRENT LOCATION</span><h2 id="ref-current-pub">Broadgate — Flat 12 Kitchen</h2><p id="ref-current-drink">Can of choice</p></div></div>
-        <div class="ref-progress-meta"><span>EVENT PROGRESS</span><strong id="ref-progress-label">0 / 9 completed</strong></div>
-        <div class="ref-progress-track"><span id="ref-progress-fill"></span></div>
+      <div class="ref-topbar"><span class="ref-status"><span class="live-dot connecting" id="ref-live-dot"></span><span id="ref-live-text">Connecting…</span></span><button type="button" class="ref-signout" id="ref-signout">Sign out</button></div>
+      <div class="bpg-setup-warning" id="ref-setup-warning" hidden><strong>New 3-team setup needed</strong><p>The database still has practice data from the old 4-team version. Open “More controls” below and choose <b>Start Fresh Event</b> to activate Blue, Black and Red. This clears old test scores.</p></div>
+      <section class="ref-hero"><div class="ref-hero-top"><span class="ref-overline">BROADGATE PUB GOLF · LIVE EVENT</span><span class="ref-count" id="ref-hole-count">HOLE 1 OF 9</span></div><h1>REF DASHBOARD</h1>
+        <div class="ref-current-row"><div class="ref-hero-hole"><span>HOLE</span><strong id="ref-current-hole">01</strong></div><div><span class="ref-overline">VIEWING</span><h2 id="ref-current-pub">Flat 12 Kitchen</h2><p id="ref-current-drink">Can of choice</p></div></div>
+        <div class="ref-progress-meta"><span>OFFICIAL EVENT PROGRESS</span><strong id="ref-progress-label">0 / 9 completed</strong></div><div class="ref-progress-track"><span id="ref-progress-fill"></span></div>
       </section>
-
-      <nav class="ref-shortcuts" aria-label="Ref page sections">
-        <a href="#ref-entry">Enter scores</a><a href="#ref-scorecard">Scorecard</a><a href="#ref-activity">Activity</a>
-      </nav>
-
-      <div class="ref-top-grid">
-        <section class="panel ref-entry-panel" id="ref-entry" aria-labelledby="ref-entry-title">
-          <div class="ref-section-heading"><div><span class="ref-overline">QUICK SCORE ENTRY</span><h2 id="ref-entry-title">CURRENT HOLE</h2></div><span class="ref-mini-pill">4 TEAMS</span></div>
-          <p class="ref-hint">One combined score per team. Type a number or use + / −. Scores are saved when you tap Save or Complete.</p>
-          <div class="ref-team-inputs" id="ref-team-inputs"></div>
-          <button class="ref-btn ref-btn-outline ref-save" id="ref-save-scores" type="button" data-ref-action>💾 SAVE CURRENT SCORES</button>
-          <div class="ref-quick-actions"><button class="ref-btn ref-add-penalty" id="ref-penalty" type="button" data-ref-action>⚠️ Add penalty</button><button class="ref-btn ref-add-challenge" id="ref-challenge" type="button" data-ref-action>⭐ Add challenge deduction</button></div>
-          <button class="ref-btn ref-btn-complete" id="ref-complete" type="button" data-ref-action>✓ COMPLETE HOLE &amp; MOVE ON</button>
-          <button class="ref-btn ref-btn-undo" id="ref-undo" type="button" data-ref-action>↶ UNDO LAST ACTION</button>
-          <p class="ref-inline-feedback" id="ref-action-feedback" role="status" aria-live="polite"></p>
-        </section>
-
-        <section class="panel ref-standings" aria-labelledby="ref-standings-title">
-          <div class="ref-section-heading"><div><span class="ref-overline">LIVE AT A GLANCE</span><h2 id="ref-standings-title">STANDINGS</h2></div><span class="ref-mini-pill">LOWEST WINS</span></div>
-          <div id="ref-standings-list" class="ref-standings-list"></div>
-          <p class="ref-hint">Totals include penalties and challenge deductions. Each hole's normal strokes remain separate.</p>
-        </section>
-      </div>
-
-      <section class="panel ref-scorecard-panel" id="ref-scorecard" aria-labelledby="ref-sheet-title">
-        <div class="ref-section-heading"><div><span class="ref-overline">EDIT ANY HOLE</span><h2 id="ref-sheet-title">FULL SCORECARD</h2></div><span class="ref-mini-pill">LIVE</span></div>
-        <p class="ref-hint">Tap any team score to edit or clear it — even a previous hole. Blank scores show as a dash.</p>
-        <div class="ref-table-wrap">
-          <table class="ref-sheet">
-            <thead><tr><th scope="col">HOLE / PUB</th><th class="ref-red-h" scope="col">RED</th><th class="ref-green-h" scope="col">GRN</th><th class="ref-blue-h" scope="col">BLU</th><th class="ref-white-h" scope="col">WHT</th></tr></thead>
-            <tbody id="ref-sheet-body"></tbody>
-            <tfoot id="ref-sheet-footer"></tfoot>
-          </table>
+      <section class="panel bpg-entry" id="ref-entry">
+        <div class="ref-section-heading"><div><span class="ref-overline">FAST MOBILE SCORING</span><h2>PLAYER SCORES</h2></div><span class="ref-mini-pill" id="ref-completeness">0 / 14</span></div>
+        <div class="bpg-hole-nav">
+          <button class="ref-btn ref-btn-outline" id="ref-prev" type="button">‹ Previous</button>
+          <span id="ref-view-label">HOLE 1 / 9</span>
+          <button class="ref-btn ref-btn-outline" id="ref-next" type="button">Next ›</button>
         </div>
+        <button class="bpg-return-current" id="ref-return-current" type="button" hidden>↗ Return to current hole</button>
+        <p class="ref-hint" id="ref-hole-help">Enter everyone's strokes. Use +/− or type a number.</p>
+        <div class="bpg-team-tabs" id="ref-team-tabs" aria-label="Choose team"></div>
+        <div class="bpg-player-inputs" id="ref-team-inputs"></div>
+        <p id="ref-draft-label" class="bpg-draft-label" aria-live="polite"></p>
+        <div class="bpg-primary-buttons">
+          <button class="ref-btn ref-btn-outline" id="ref-save-scores" type="button" data-ref-action>💾 SAVE SCORES</button>
+          <button class="ref-btn ref-btn-primary" id="ref-save-next" type="button" data-ref-action>SAVE &amp; NEXT TEAM →</button>
+        </div>
+        <button class="ref-btn ref-btn-complete" id="ref-complete" type="button" data-ref-action>✓ COMPLETE HOLE &amp; MOVE ON</button>
+        <p class="ref-inline-feedback" id="ref-action-feedback" role="status" aria-live="polite"></p>
       </section>
 
-      <section class="panel ref-activity-panel" id="ref-activity" aria-labelledby="ref-activity-title">
-        <div class="ref-section-heading"><div><span class="ref-overline">LATEST CHANGES</span><h2 id="ref-activity-title">ACTIVITY HISTORY</h2></div></div>
-        <div class="ref-activity-list" id="ref-history-list"><p class="ref-hint">No actions recorded yet.</p></div>
+      <section class="panel bpg-score-panel" id="ref-scorecard">
+        <div class="ref-section-heading"><div><span class="ref-overline">TAP A CELL TO CORRECT IT</span><h2>FULL SCORECARD</h2></div><span class="ref-mini-pill">AVERAGES</span></div>
+        <p class="ref-hint">Shows the adjusted average for each team. Tap a score to jump to those players' inputs.</p>
+        <div class="ref-table-wrap"><table class="ref-sheet"><thead><tr><th scope="col">HOLE / PUB</th><th class="ref-blue-h" scope="col">BLUE</th><th class="ref-black-h" scope="col">BLACK</th><th class="ref-red-h" scope="col">RED</th></tr></thead><tbody id="ref-sheet-body"></tbody><tfoot id="ref-sheet-footer"></tfoot></table></div>
       </section>
 
-      <section class="panel ref-danger-panel" aria-labelledby="ref-reset-title">
-        <span class="ref-overline">EVENT MANAGEMENT</span><h2 id="ref-reset-title">RESET CONTROLS</h2>
-        <p>Use these only when preparing or restarting a practice event. Your four teams and pub route will remain the same.</p>
-        <div class="ref-danger-buttons"><button class="ref-btn ref-btn-outline" id="ref-reset-scores" type="button" data-ref-action>Reset scores &amp; progress (undoable)</button><button class="ref-btn ref-btn-danger" id="ref-full-reset" type="button" data-ref-action>Start fresh event (clear history too)</button></div>
-      </section>
-
-      <footer class="site-footer"><div><strong>⛳ BROADGATE PUB GOLF</strong><span>REF CONTROL</span></div><small>Four teams · Nine holes · One live scoreboard</small></footer>
+      <details class="panel bpg-more-controls" id="ref-more"><summary>⚙️ More controls <span>Penalties · Undo · Reset</span></summary>
+        <div class="bpg-more-body">
+          <button class="ref-btn ref-btn-outline" type="button" id="ref-show-penalties" data-ref-action>⚠️ Add / correct a penalty</button>
+          <div id="ref-penalty-panel" class="bpg-penalty-panel" hidden>
+            <form id="ref-penalty-form">
+              <label for="ref-penalty-hole">Hole</label><select id="ref-penalty-hole"></select>
+              <label for="ref-penalty-team">Team</label><select id="ref-penalty-team"></select>
+              <label for="ref-penalty-scope">Applies to</label><select id="ref-penalty-scope"><option value="player">One player</option><option value="team">Whole team</option></select>
+              <div id="ref-penalty-player-row"><label for="ref-penalty-player">Player</label><select id="ref-penalty-player"></select></div>
+              <label for="ref-penalty-amount">Penalty strokes</label><input id="ref-penalty-amount" type="number" min="1" max="99" value="1" inputmode="numeric" required />
+              <label for="ref-penalty-direction">Action</label><select id="ref-penalty-direction"><option value="add">Add penalty</option><option value="remove">Remove existing penalty</option></select>
+              <button class="ref-btn ref-btn-primary" type="submit" data-ref-action>SAVE PENALTY</button>
+            </form>
+            <p class="ref-hint">A player penalty is divided across that team's members when averaged. A whole-team penalty adds directly to the team's hole average.</p>
+          </div>
+          <button class="ref-btn ref-btn-undo" id="ref-undo" type="button" data-ref-action>↶ UNDO LAST ACTION</button>
+          <div class="bpg-more-divider"></div>
+          <button class="ref-btn ref-btn-outline" id="ref-reset-scores" type="button" data-ref-action>Reset scores &amp; progress (undoable)</button>
+          <button class="ref-btn ref-btn-danger" id="ref-full-reset" type="button" data-ref-action>Start Fresh Event</button>
+        </div>
+      </details>
+      <section class="panel ref-activity-panel" id="ref-activity"><div class="ref-section-heading"><div><span class="ref-overline">LATEST CHANGES</span><h2>ACTIVITY HISTORY</h2></div></div><div class="ref-activity-list" id="ref-history-list"></div></section>
+      <footer class="site-footer"><div><strong>⛳ BROADGATE PUB GOLF</strong><span>REF CONTROL</span></div><small>3 teams · 14 players · 9 holes</small></footer>
     </div>
   </main>
-
-  <div class="ref-modal-overlay" id="ref-modal-overlay" hidden>
-    <div class="ref-modal" role="dialog" aria-modal="true" aria-labelledby="ref-modal-title">
-      <div class="ref-modal-handle" aria-hidden="true"></div>
-      <div class="ref-modal-heading"><h2 id="ref-modal-title">EDIT SCORE</h2><button type="button" class="ref-modal-close" id="ref-modal-close" aria-label="Close editor">✕</button></div>
-      <p id="ref-modal-summary" class="ref-hint"></p>
-      <form id="ref-modal-form">
-        <div id="ref-modal-team-row" hidden><label for="ref-modal-team">Team</label><select id="ref-modal-team"></select></div>
-        <label id="ref-modal-label" for="ref-modal-value">Score</label>
-        <input id="ref-modal-value" type="number" min="0" max="999" step="1" inputmode="numeric" required />
-        <label for="ref-modal-reason" id="ref-reason-label" hidden>Note (optional)</label>
-        <input id="ref-modal-reason" type="text" maxlength="100" placeholder="Optional note" hidden />
-        <div class="ref-modal-actions"><button class="ref-btn ref-btn-primary" type="submit" id="ref-modal-save">SAVE CHANGE</button><button class="ref-btn ref-btn-outline" type="button" id="ref-modal-clear" hidden>CLEAR SCORE</button></div>
-      </form>
-    </div>
-  </div>
-  <!-- Mobile-friendly on-page confirmations, used by Undo and both Reset actions. -->
-  <div id="ref-confirm-overlay" class="ref-confirm-overlay" hidden>
-    <div class="ref-confirm-panel" role="dialog" aria-modal="true" aria-labelledby="ref-confirm-title" aria-describedby="ref-confirm-message">
-      <div class="ref-confirm-handle" aria-hidden="true"></div>
-      <span class="ref-overline">REF EVENT CONTROL</span>
-      <h2 id="ref-confirm-title">Confirm action</h2>
-      <p id="ref-confirm-message"></p>
-      <form id="ref-confirm-form">
-        <div id="ref-confirm-entry-row" class="ref-confirm-entry-row" hidden>
-          <label for="ref-confirm-entry">Type <strong>RESET</strong> to confirm</label>
-          <input id="ref-confirm-entry" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="RESET" />
-          <p id="ref-confirm-error" class="ref-confirm-error" hidden>Please type RESET exactly.</p>
-        </div>
-        <div class="ref-confirm-actions">
-          <button type="button" class="ref-btn ref-btn-outline" id="ref-confirm-cancel">CANCEL</button>
-          <button type="submit" class="ref-btn ref-btn-primary" id="ref-confirm-accept">CONFIRM</button>
-        </div>
-      </form>
-    </div>
-  </div>
+  <div id="ref-confirm-overlay" class="ref-confirm-overlay" hidden><div class="ref-confirm-panel" role="dialog" aria-modal="true" aria-labelledby="ref-confirm-title" aria-describedby="ref-confirm-message">
+    <div class="ref-confirm-handle"></div><span class="ref-overline">REF EVENT CONTROL</span><h2 id="ref-confirm-title">Confirm action</h2><p id="ref-confirm-message"></p>
+    <form id="ref-confirm-form"><div id="ref-confirm-entry-row" class="ref-confirm-entry-row" hidden><label for="ref-confirm-entry">Type <strong>RESET</strong> to confirm</label><input id="ref-confirm-entry" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="RESET" /><p id="ref-confirm-error" class="ref-confirm-error" hidden>Please type RESET exactly.</p></div><div class="ref-confirm-actions"><button id="ref-confirm-cancel" type="button" class="ref-btn ref-btn-outline">CANCEL</button><button id="ref-confirm-accept" type="submit" class="ref-btn ref-btn-primary">CONFIRM</button></div></form>
+  </div></div>
 </body>
 </html>
