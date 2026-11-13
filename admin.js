@@ -358,7 +358,7 @@ ui.penalty.form.addEventListener('submit',(e)=>{e.preventDefault();guarded(async
   await changeWithUndo({[`teams/${teamId}/${path}`]:next===0?null:next},
     `${team.name}: ${amount} penalty stroke(s) ${change} ${name} on Hole ${hole}`,'penalty');
   ui.penalty.panel.hidden=true;
-}));});
+});});
 $('ref-undo').addEventListener('click',()=>guarded(async()=>{
   const snapshot=await get(undoRef);
   const undo=snapshot.val();
